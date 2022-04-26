@@ -7,7 +7,7 @@ if number >= 0:
 if number < 0:
     ldigit = number % -10
 if ldigit > 5:
-    print(f"{ld} {number} is {ldigit}and is greater than 5")
+    print(f"{ld} {number} is {ldigit} and is greater than 5")
 elif ldigit == 0:
     print(f"{ld} {number} is {ldigit} and is 0")
 elif ldigit < 6 and ldigit != 0:
