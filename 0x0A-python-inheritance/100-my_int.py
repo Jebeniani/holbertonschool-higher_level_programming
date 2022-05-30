@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-
 class MyInt(int):
     """Creating a class named MyInt"""
     def __init__(self, value):
