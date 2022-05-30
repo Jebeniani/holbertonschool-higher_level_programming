@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""writing a class named MyInt"""
+
 
 class MyInt(int):
     """Creating a class named MyInt"""
