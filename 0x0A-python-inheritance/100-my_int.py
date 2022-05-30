@@ -11,8 +11,8 @@ class MyInt(int):
 
     def __eq__(self, val):
         """the equal method"""
-        return (str(self.value) == str(val))
+        return not(str(self.value) == str(val))
 
     def __ne__(self, val):
         """the not equal method"""
-        return (str(self.value) != str(val))
+        return not(str(self.value) != str(val))
