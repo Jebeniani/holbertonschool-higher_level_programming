@@ -7,7 +7,7 @@ load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 try:
     op = my_file = load_from_json_file("add_item.json")
-except:
+except Exception:
     op = []
 for i in sys.argv[1:]:
     op.append(i)
