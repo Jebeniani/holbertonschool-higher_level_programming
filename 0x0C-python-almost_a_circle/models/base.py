@@ -92,8 +92,8 @@ class Base:
                 else:
                     headers = ["id", "size", "x", "y"]
                 my_dict = csv.DictReader(file, fieldnames=headers)
-                my_dict = [dict([key, int(value)] for key,
-                        value in f.items()) for f in my_dict]
+                my_dict = [dict([key, int(value)] for key, value in
+                                f.items()) for f in my_dict]
                 return [cls.create(**argument) for argument in my_dict]
         except FileNotFoundError:
             return []
