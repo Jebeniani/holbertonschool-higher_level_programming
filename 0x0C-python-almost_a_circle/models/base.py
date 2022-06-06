@@ -3,6 +3,7 @@
 """
 import json
 from os import path
+import csv
 
 
 class Base:
@@ -63,3 +64,36 @@ class Base:
         with open(cls.__name__ + ".json", 'r') as file:
             list = cls.from_json_string(file.read())
             return [cls.create(**index) for index in list]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """method that saves data into a csv file"""
+        new_csv_file = cls.__name__ + ".csv"
+        with open(new_csv_file, 'w', newline='') as file:
+            if list_objs is None or list_objs == []:
+                file.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    headers = ["id", "width", "height", "x", "y"]
+                else:
+                    headers = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(file, fieldnames=headers)
+                for objects in list_objs:
+                    writer.writerow(objects.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """loads csv data"""
+        new_csv_file = cls.__name__ + ".csv"
+        try:
+            with open(new_csv_file, 'r', newline='') as file:
+                if cls.__name__ == "Rectangle":
+                    headers = ["id", "width", "height", "x", "y"]
+                else:
+                    headers = ["id", "size", "x", "y"]
+                my_dict = csv.DictReader(file, fieldnames=headers)
+                my_dict = [dict([key, int(value)] for key,
+                        value in f.items()) for f in my_dict]
+                return [cls.create(**argument) for argument in my_dict]
+        except FileNotFoundError:
+            return []
