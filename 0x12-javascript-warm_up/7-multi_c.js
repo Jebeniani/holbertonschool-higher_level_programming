@@ -8,7 +8,7 @@ if (process.argv[2] == null)
 else
 {
 	let i;
-	for(i = 0; i < process.argv[2]; i++)
+	for (i = 0; i < process.argv[2]; i++)
 	{
 		console.log(liar);
 	}
